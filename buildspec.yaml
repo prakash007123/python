@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8 # Change this to your desired Python version
+    commands:
+      - echo "Installing Python dependencies"
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Executing pre-build commands"
+      # Add any pre-build commands here
+
+  build:
+    commands:
+      - echo "Building your Python application"
+      # Add commands to build your Python application here
+
+  post_build:
+    commands:
+      - echo "Executing post-build commands"
+      # Add any post-build commands here
+
+artifacts:
+  files: 
+    - '**/*' # Include all files in the build artifact
+
+cache:
+  paths:
+    - /root/.cache/pip
