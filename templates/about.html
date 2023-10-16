@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Outlier Detection</title>
+    <style>
+        /* Your existing CSS styles... */
+
+        /* Style for the "About" page heading */
+        /* Style for the footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Style for contact and location information */
+        .contact-info {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for social media icons */
+        .social-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-icons li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .about-heading {
+            color: #007bff;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Style for the main content paragraph */
+        .container p {
+            color:black;
+            font-style: oblique;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Style for the subheadings */
+        .container h3 {
+            color: #007bff;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Style for the interactive button */
+        .show-hide-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Rest of your existing styles... */
+    </style>
+</head>
+<body>
+    <!-- Navigation bar... -->
+
+    <div class="container">
+        <!-- "About" page heading -->
+        <h1 class="about-heading">About Outlier Detection</h1>
+        <img src="{{ url_for('static', filename='Outlier-Detection.png') }}" alt="Outlier Detection Image" style="max-width: 100%; height: auto; margin-top: 20px;">
+        <p>
+            <b>Outliers are those data points that are significantly different from the rest of the dataset. They are often abnormal observations that skew the data distribution, and arise due to inconsistent data entry, or erroneous observations.<br><br>
+
+            To ensure that the trained model generalizes well to the valid range of test inputs, it’s important to detect and remove outliers.<br><br>
+
+            In this guide, we’ll explore some statistical techniques that are widely used for outlier detection and removal.<br><br></b>
+        </p>
+        <h3> Why Should You Detect Outliers?</h3>
+        <p><b>
+            In the machine learning pipeline, data cleaning and preprocessing is an important step as it helps you better understand the data. During this step, you deal with missing values, detect outliers, and more.<br><br>
+
+            As outliers are very different values—abnormally low or abnormally high—their presence can often skew the results of statistical analyses on the dataset. This could lead to less effective and less useful models.<br><br>
+
+            But dealing with outliers often requires domain expertise, and none of the outlier detection techniques should be applied without understanding the data distribution and the use case.<br><br>
+
+            For example, in a dataset of house prices, if you find a few houses priced at around $1.5 million—much higher than the median house price, they’re likely outliers. However, if the dataset contains a significantly large number of houses priced at $1 million and above—they may be indicative of an increasing trend in house prices. So it would be incorrect to label them all as outliers. In this case, you need some knowledge of the real estate domain.<br><br>
+
+            The goal of outlier detection is to remove the points—which are truly outliers—so you can build a model that performs well on unseen test data. We’ll go over a few techniques that’ll help us detect outliers in data.<br><br></p></b>
+        
+        <!-- Dynamic content -->
+        <button class="show-hide-button" id="toggleContentButton">Show More</button>
+        <div id="dynamicContent" style="display: none;">
+            <p><b>One class SVM is a type of novelty and outlier detection method that tries to fit a boundary around the normal data and identify any new data point that falls outside the boundary as an outlier</b></p>
+        </div>
+    </div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Get references to the button and dynamic content
+        const toggleContentButton = document.getElementById("toggleContentButton");
+        const dynamicContent = document.getElementById("dynamicContent");
+
+        // Toggle the visibility of dynamic content
+        toggleContentButton.addEventListener("click", function () {
+            if (dynamicContent.style.display === "none") {
+                dynamicContent.style.display = "block";
+                toggleContentButton.textContent = "Hide";
+            } else {
+                dynamicContent.style.display = "none";
+                toggleContentButton.textContent = "Show More";
+            }
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <p><b>Contact Us:</b></p>
+            <p>Email: kerthika@outlier.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <div class="contact-info">
+            <p><b>Location:</b></p>
+            <p>123 Main Street</p>
+            <p>City, State 12345</p>
+        </div>
+        <ul class="social-icons">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-linkedin"></a></li>
+            <li><a href="#" class="fa fa-instagram"></a></li>
+        </ul>
+    </footer>
+</body>
+</html>

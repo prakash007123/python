@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        
+        /* Reset some default styles for form elements */
+        form, input, textarea, button {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+
+        /* Apply styles to the body and container */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        /* Style for the heading */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Style for labels and input fields */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Style for the submit button */
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the confirmation message */
+        #confirmation {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Footer styles... */
+
+    </style>
+</head>
+<body>
+    <!-- Navigation bar... -->
+
+    <div class="container">
+        <!-- Contact form and content... -->
+        <h1>Contact Us</h1>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="confirmation"></div>
+    </div>
+
+    <!-- Footer... -->
+
+    <script>
+        // JavaScript for form validation and submission...
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get form values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            // Simple validation: Check if name, email, and message are not empty
+            if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+                alert("Please fill in all fields.");
+            } else {
+                // Simulate form submission (replace this with your actual form submission code)
+                // In this example, we display a confirmation message
+                var confirmationDiv = document.getElementById("confirmation");
+                confirmationDiv.innerHTML = "<p>Thank you for your message, " + name + "!</p>";
+            }
+        });
+
+    </script>
+     
+</body>
+</html>

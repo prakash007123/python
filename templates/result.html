@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One-Class SVM Results</title>
+    <style>
+        /* Center the content on the page */
+        body {
+            display: flexbox;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Rest of your CSS styles... */
+
+        /* Style the form container */
+        .form-container {
+            text-align: center;
+        }
+
+        /* Style the custom button */
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Add a smooth hover effect */
+        }
+
+        /* Style for the button on hover */
+        .custom-button:hover {
+            background-color: #0056b3; /* Button background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>One-Class SVM Results</h1>
+    <h2>Outliers:</h2>
+    
+    <img src="{{ url_for('static', filename='plot_' + result_id + '.png') }}" alt="SVM Outliers">
+    <p>Result ID: {{ result_id }}</p>
+    <td>
+        <a href="{{ url_for('download_result', result_id=result_id) }}" class="custom-button">Download</a>
+    </td><br><br>
+    
+    <!-- Centered form container -->
+    
+        <form method="POST" action="/clear_outliers/{{ result_id }}">
+            <table>
+              <thead>
+                <tr>
+                  <th>Select</th>
+                  <th>Outlier Index</th>
+                  <th>Data Point</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Include a "Select All" checkbox -->
+                <tr>
+                  <td><input type="checkbox" id="select-all"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <!-- Iterate through outliers and display them with checkboxes -->
+                {% for outlier in outliers_info %}
+                  <tr>
+                    <td><input type="checkbox" name="selected_outliers" value="{{ outlier.outlier_index }}"></td>
+                    <td>{{ outlier.outlier_index }}</td>
+                    <td>{{ outlier.data_point }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <!-- Apply the custom button style to the buttons -->
+            <button type="submit" name="action" value="clear" class="custom-button">Clear Selected Outliers</button>
+            <button type="submit" name="action" value="download" class="custom-button">Download Cleared Outliers</button>
+        </form>
+    
+
+    <a class="back-link" href="{{ url_for('home') }}">Back to Home</a>
+    
+    <script>
+        // Get the "Select All" checkbox element
+        var selectAllCheckbox = document.getElementById("select-all");
+    
+        // Get all the outlier checkboxes
+        var outlierCheckboxes = document.getElementsByName("selected_outliers");
+    
+        // Add an event listener to the "Select All" checkbox
+        selectAllCheckbox.addEventListener("change", function () {
+            for (var i = 0; i < outlierCheckboxes.length; i++) {
+                outlierCheckboxes[i].checked = this.checked;
+            }
+        });
+    </script>
+</body>
+</html>
